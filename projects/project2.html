@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Title — Jan Joost Hutjes</title>
+
+  <!-- Site Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Courier+Prime:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- One global stylesheet -->
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+
+  <!-- HEADER (same as index) -->
+  <header class="site-header site-header-ascii">
+    <div class="ascii-banner">
+      Jan Joost Hutjes — Portfolio
+    </div>
+  </header>
+
+  <!-- NAV (paths are relative from /projects/) -->
+  <nav class="top-nav">
+    <a href="../index.html" class="nav-link">work</a>
+    <a href="../about.html" class="nav-link">about</a>
+    <a href="mailto:janjoost@example.com" class="nav-link">contact</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <article class="project">
+
+      <!-- ===== FILL THESE ===== -->
+      <h2>Exposure</h2>
+      <div class="meta">2024</div>
+
+      <div class="submeta">
+        <span class="label">Materials</span>
+        Hout, Papier-maché, LED
+        <span class="spacer"></span>
+        <span class="label">Dimensions</span>
+        Variable
+      </div>
+      <!-- ===== /FILL THESE ===== -->
+
+      <!-- CAROUSEL -->
+      <div class="carousel" role="region" aria-label="Project images">
+        <div class="viewport">
+          <div class="track" id="proj-track">
+            <!-- ===== REPLACE IMAGES ===== -->
+            <div class="slide"><img src="../images/exposure.jpg" alt="Project — image 1" loading="lazy"></div>
+            <div class="slide"><img src="../images/foto-exposure4.jpg" alt="Project — image 2" loading="lazy"></div>
+            <div class="slide"><img src="../images/foto-exposure3.jpg" alt="Project — image 3" loading="lazy"></div>
+            <div class="slide"><img src="../images/foto expositie .JPG" alt="Project — image 4" loading="lazy"></div>
+            <!-- ===== /REPLACE IMAGES ===== -->
+          </div>
+        </div>
+
+        <div class="nav">
+          <button class="btn prev" id="proj-prev" aria-label="Previous image">‹</button>
+          <button class="btn next" id="proj-next" aria-label="Next image">›</button>
+        </div>
+      </div>
+
+      <div class="dots" id="proj-dots" aria-hidden="true"></div>
+
+      <!-- TEXT -->
+      <div class="body">
+        <!-- ===== REPLACE TEXT ===== -->
+        In zijn afstudeerwerk probeert Hutjes  de abstractie van een stad in vogelperspectief te vangen. Het geheel bestaat uit abstracte modellen en meer figuratieve modellen. Het idee komt voort uit de fascinatie voor de stad als palet. Hoe dit samenwerkt of juist niet. Als toeschouwer word je uitgenodigd om door de modellen heen te lopen. Hier probeer ik dezelfde rust te vangen die men ook ervaart op grote hoogte in een stad.
+      </div>
+
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p class="copy">© <span id="year"></span> douwe teusink</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lb" aria-modal="true" role="dialog">
+    <img class="lightbox__img" id="lb-img" alt="">
+    <button class="lightbox__btn lightbox__prev" id="lb-prev" aria-label="Previous image">‹</button>
+    <button class="lightbox__btn lightbox__next" id="lb-next" aria-label="Next image">›</button>
+    <button class="lightbox__btn lightbox__close" id="lb-close" aria-label="Close">×</button>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function(){
+      const track   = document.getElementById('proj-track');
+      const prevBtn = document.getElementById('proj-prev');
+      const nextBtn = document.getElementById('proj-next');
+      const slides  = Array.from(track.children);
+      const dotsBox = document.getElementById('proj-dots');
+      let index = 0;
+
+      // build dots
+      slides.forEach((_, i) => {
+        const d = document.createElement('span');
+        d.className = 'dot' + (i === 0 ? ' is-active' : '');
+        d.addEventListener('click', () => { index = i; update(); });
+        dotsBox.appendChild(d);
+      });
+
+      function update(){
+        track.style.transform = `translateX(-${index * 100}%)`;
+        [...dotsBox.children].forEach((dot, i) => {
+          dot.classList.toggle('is-active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        index = (index - 1 + slides.length) % slides.length;
+        update();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        index = (index + 1) % slides.length;
+        update();
+      });
+
+      // Lightbox
+      const lb      = document.getElementById('lb');
+      const lbImg   = document.getElementById('lb-img');
+      const lbPrev  = document.getElementById('lb-prev');
+      const lbNext  = document.getElementById('lb-next');
+      const lbClose = document.getElementById('lb-close');
+      let li = 0;
+
+      function openLB(i){
+        li = i;
+        lbImg.src = slides[li].querySelector('img').src;
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLB(){
+        lb.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+      function navLB(dir){
+        li = (li + dir + slides.length) % slides.length;
+        lbImg.src = slides[li].querySelector('img').src;
+      }
+
+      slides.forEach((slide, i) => {
+        slide.querySelector('img').addEventListener('click', () => openLB(i));
+      });
+
+      lbPrev.addEventListener('click', () => navLB(-1));
+      lbNext.addEventListener('click', () => navLB(1));
+      lbClose.addEventListener('click', closeLB);
+      lb.addEventListener('click', (e) => { if (e.target === lb) closeLB(); });
+
+      // keyboard:
+      // - when lightbox open: arrows navigate lb, esc closes
+      // - when closed: arrows navigate carousel
+      document.addEventListener('keydown', (e) => {
+        if (lb.classList.contains('is-open')) {
+          if (e.key === 'Escape') closeLB();
+          if (e.key === 'ArrowLeft') navLB(-1);
+          if (e.key === 'ArrowRight') navLB(1);
+          return;
+        }
+        if (e.key === 'ArrowLeft')  prevBtn.click();
+        if (e.key === 'ArrowRight') nextBtn.click();
+      });
+
+      update();
+    })();
+  </script>
+
+</body>
+</html>

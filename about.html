@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jan Joost Hutjes — About</title>
+
+  <!-- Site Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Courier+Prime:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- HEADER (same as index) -->
+  <header class="site-header site-header-ascii">
+    <div class="ascii-banner">
+      Jan Joost Hutjes — Portfolio
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="top-nav">
+    <a href="index.html" class="nav-link">work</a>
+    <a href="about.html" class="nav-link">about</a>
+    <a href="mailto:janjoost@example.com" class="nav-link">contact</a>
+  </nav>
+
+  <main>
+    <article class="about">
+      <h2>about</h2>
+
+      <!-- BIO + PHOTO -->
+      <div class="about-grid">
+        <div class="copy">
+
+          <!-- ✅ Paste Jan Joost's Dutch about text here (exactly) -->
+          <p>Joost Hutjes maakte door zijn opvoeding al op jonge leeftijd kennis met architectuur. Hij
+absorbeerde de complexiteit van ontwerp en constructie, die nu een fundamenteel aspect van
+zijn werk vormen. Zijn serie ‘’Ik weet nog toen deze wijk gebouwd werd’’ biedt hem een manier om
+contact te maken met zijn
+omgeving. Hierbij haalt hij inspiratie uit herinneringen, ideeën en emoties uit zijn
+omgeving. Hutjes drukt zowel de aantrekkelijke als de onaantrekkelijke aspecten uit en streeft naar
+een evenwicht in zijn creaties. Samen bieden zijn maquettes een boeiende blik op een
+omgeving die hem aanspreekt. Zijn gedetailleerde werken bevatten elementen die strak zijn en
+elementen die rommelig zijn, maar tegelijkertijd persoonlijk en
+menselijk. In een tijdperk dat gedomineerd wordt door machines, vindt Hutjes fascinatie voor kleine
+imperfecties van objecten en structuren. Deze imperfecties onthullen niet alleen de menselijkheid erin,
+maar verraden ook de toewijding en tijd die in deze creatie zijn gestoken. Door gebruik te maken van
+tweedehands materialen verwerkt hij overblijfselen van hun vroegere levens in zijn werk, waardoor zijn
+sculpturen een extra laag van diepte en geschiedenis krijgen. Sinds een paar maanden is Hutjes
+gevestigd in Kanalen Eiland, een typische wederopbouw wijk. Hutjes is gefascineerd geraakt door de
+ritmische opzet van deze wijken. Het idee dat mensen families in deze huizen leven en dat dit maar door
+blijft schuiven fascineert Hutjes. De flats zijn allemaal gerenoveerd maar toch allemaal het zelfde. De
+meeste flats zijn vijf etages hoog. Vanaf de zesde moet er namelijk een lift aangebracht worden, en dat is
+duur. Vandaar dat alles via de trap gaat. Het beeld van efficiëntie en anonimiteit ziet hij als poëtisch en
+soms zelfs romantisch. Vandaar dat alles via de trap gaat. zijn andere grote inspiratie bron is La Maison
+Radieuse in Nantes van Le Corbusier. Het visuele beeld van de een flat op poten fascineert hem enorm.
+Zon enorme gestalte op zulke kleine poten. Hij bezocht deze op jonge leeftijd met zijn vader. En had
+grote invloed op hem.</p>
+          <p><!-- paste paragraph 2 here --></p>
+          <p><!-- paste paragraph 3 here --></p>
+          <!-- ✅ /Paste text -->
+
+        </div>
+
+        <!-- Portrait -->
+        <figure class="about-photo">
+          <img src="images/portrait.jpg" alt="Portret van Jan Joost Hutjes">
+          <!-- <figcaption>Foto: …</figcaption> -->
+        </figure>
+      </div>
+
+      <!-- CV -->
+      <section class="cv">
+        <h3>cv</h3>
+
+        <div class="cv-grid">
+
+          <div class="cv-block">
+            <h4>nomination &amp; publications</h4>
+            <ul>
+              <li><span class="cv-year">2024</span> Nominated flowering the future price</li>
+              <li><span class="cv-year">2025</span> Interview in interni magazine</li>
+            </ul>
+          </div>
+
+          <div class="cv-block">
+            <h4>exhibitions</h4>
+            <ul>
+              <li><span class="cv-year">2024</span> Moving Gallery (Utrecht)</li>
+              <li><span class="cv-year">2024</span> gallery Sanaa (Utrecht)</li>
+              <li><span class="cv-year">2025</span> Ex-bunker (Utrecht)</li>
+              <li><span class="cv-year">2025</span> Cacaofabriek (Helmond)</li>
+              <li><span class="cv-year">2025</span> Kunst liefde (Utrecht)</li>
+              <li><span class="cv-year">2026</span> Kunsthal KAdE (Amersfoort)</li>
+              <li><span class="cv-year">2026</span> collectie de groen (Arnhem)</li>
+              <li><span class="cv-year">2026</span> Impakt (Utrecht)</li>
+              <li><span class="cv-year">2026</span> Moving gallery (Utrecht)</li>
+            </ul>
+          </div>
+
+          <div class="cv-block">
+            <h4>teaching</h4>
+            <ul>
+              <li><span class="cv-year">2025</span> Guest lecturer at Bachelor of Fine Art, HKU Utrecht</li>
+            </ul>
+          </div>
+
+          <div class="cv-block">
+            <h4>education</h4>
+            <ul>
+              <li><span class="cv-year">2020 – 2024</span> Bachelor of Fine Art, HKU, Utrecht</li>
+              <li><span class="cv-year">2016/2019</span> middenkaderfunctionaris bouw ROC Hoorn</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <p class="copy">© <span id="year"></span> Jan Joost Hutjes · site by Douwe Teusink</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
