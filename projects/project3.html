@@ -27,14 +27,12 @@
     <a href="../index.html" class="nav-link">work</a>
     <a href="../about.html" class="nav-link">about</a>
     <a href="../contact.html" class="nav-link">contact</a>
-
   </nav>
 
   <!-- MAIN -->
   <main>
     <article class="project">
 
-      <!-- ===== FILL THESE ===== -->
       <h2>Ex-Bunker</h2>
       <div class="meta">2025</div>
 
@@ -45,18 +43,14 @@
         <span class="label">Dimensions</span>
         Variable
       </div>
-      <!-- ===== /FILL THESE ===== -->
 
       <!-- CAROUSEL -->
       <div class="carousel" role="region" aria-label="Project images">
         <div class="viewport">
           <div class="track" id="proj-track">
-            <!-- ===== REPLACE IMAGES ===== -->
             <div class="slide"><img src="../images/ex-bunker.jpeg" alt="Project — image 1" loading="lazy"></div>
-            <div class="slide"><img src="../images/ex-bunker 2.jpeg" alt="Project — image 2" loading="lazy"></div>
-            <div class="slide"><img src="../images/exbunker 3.webp" alt="Project — image 3" loading="lazy"></div>
-            
-            <!-- ===== /REPLACE IMAGES ===== -->
+            <div class="slide"><img src="../images/ex-bunker2.jpeg" alt="Project — image 2" loading="lazy"></div>
+            <div class="slide"><img src="../images/exbunker3.webp" alt="Project — image 3" loading="lazy"></div>
           </div>
         </div>
 
@@ -70,16 +64,17 @@
 
       <!-- TEXT -->
       <div class="body">
-        <!-- ===== REPLACE TEXT ===== -->
         <p>Deze expositie zonder titel is een combinatie van eerder getoond werk en meubilair dat Joost Hutjes de afgelopen maanden heeft gemaakt. Toen hij de EXbunker zag, stelde hij zichzelf de vraag hoe hij deze ruimte zelf zou inrichten. De bunker is daarom verworden tot een modelwoning. Hierdoor wordt de bunker in principe ook een maquette, maar dan van binnen. Door hier weer maquettes in te plaatsen, speelt Hutjes met perceptie op formaat.</p>
         <p>Hij richtte de ruimte in met zelfgebouwde meubels. Het hout voor deze meubels heeft Hutjes op straat verzameld en hergebruikt. Hij is gefascineerd door het idee van multiplex dat in Scandinavië wordt geproduceerd en vervolgens over de hele wereld wordt verscheept. Het concept van de versnippering van zo’n product intrigeert hem. Vanuit deze fascinatie verzamelt hij stukken multiplex om daar nieuwe voorwerpen van te maken. Voor hem zit er een poëtische lading in de gedachte dat al die stukjes hout, ooit deel van een huis, samen weer iets nieuws vormen.</p>
-        <!-- ===== /REPLACE TEXT ===== -->
       </div>
 
     </article>
   </main>
 
-
+  <!-- FOOTER (added so #year exists) -->
+  <footer class="site-footer">
+    <p class="copy">© <span id="year"></span> douwe teusink</p>
+  </footer>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lb" aria-modal="true" role="dialog">
@@ -91,8 +86,9 @@
 
   <!-- Scripts -->
   <script>
-    // footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // footer year (safe)
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     (function(){
       const track   = document.getElementById('proj-track');
@@ -159,9 +155,6 @@
       lbClose.addEventListener('click', closeLB);
       lb.addEventListener('click', (e) => { if (e.target === lb) closeLB(); });
 
-      // keyboard:
-      // - when lightbox open: arrows navigate lb, esc closes
-      // - when closed: arrows navigate carousel
       document.addEventListener('keydown', (e) => {
         if (lb.classList.contains('is-open')) {
           if (e.key === 'Escape') closeLB();

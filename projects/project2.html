@@ -27,14 +27,12 @@
     <a href="../index.html" class="nav-link">work</a>
     <a href="../about.html" class="nav-link">about</a>
     <a href="../contact.html" class="nav-link">contact</a>
-
   </nav>
 
   <!-- MAIN -->
   <main>
     <article class="project">
 
-      <!-- ===== FILL THESE ===== -->
       <h2>Exposure</h2>
       <div class="meta">2024</div>
 
@@ -45,18 +43,15 @@
         <span class="label">Dimensions</span>
         Variable
       </div>
-      <!-- ===== /FILL THESE ===== -->
 
       <!-- CAROUSEL -->
       <div class="carousel" role="region" aria-label="Project images">
         <div class="viewport">
           <div class="track" id="proj-track">
-            <!-- ===== REPLACE IMAGES ===== -->
             <div class="slide"><img src="../images/exposure.jpg" alt="Project — image 1" loading="lazy"></div>
             <div class="slide"><img src="../images/foto-exposure4.jpg" alt="Project — image 2" loading="lazy"></div>
             <div class="slide"><img src="../images/foto-exposure3.jpg" alt="Project — image 3" loading="lazy"></div>
             <div class="slide"><img src="../images/foto expositie .JPG" alt="Project — image 4" loading="lazy"></div>
-            <!-- ===== /REPLACE IMAGES ===== -->
           </div>
         </div>
 
@@ -70,14 +65,16 @@
 
       <!-- TEXT -->
       <div class="body">
-        <!-- ===== REPLACE TEXT ===== -->
-        In zijn afstudeerwerk probeert Hutjes  de abstractie van een stad in vogelperspectief te vangen. Het geheel bestaat uit abstracte modellen en meer figuratieve modellen. Het idee komt voort uit de fascinatie voor de stad als palet. Hoe dit samenwerkt of juist niet. Als toeschouwer word je uitgenodigd om door de modellen heen te lopen. Hier probeer ik dezelfde rust te vangen die men ook ervaart op grote hoogte in een stad.
+        In zijn afstudeerwerk probeert Hutjes de abstractie van een stad in vogelperspectief te vangen. Het geheel bestaat uit abstracte modellen en meer figuratieve modellen. Het idee komt voort uit de fascinatie voor de stad als palet. Hoe dit samenwerkt of juist niet. Als toeschouwer word je uitgenodigd om door de modellen heen te lopen. Hier probeer ik dezelfde rust te vangen die men ook ervaart op grote hoogte in een stad.
       </div>
 
     </article>
   </main>
 
- 
+  <!-- FOOTER (added, so #year exists) -->
+  <footer class="site-footer">
+    <p class="copy">© <span id="year"></span> douwe teusink</p>
+  </footer>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lb" aria-modal="true" role="dialog">
@@ -89,8 +86,9 @@
 
   <!-- Scripts -->
   <script>
-    // footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // footer year (safe even if you ever remove the footer)
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     (function(){
       const track   = document.getElementById('proj-track');
